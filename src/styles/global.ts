@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle`
 
   :focus {
     outline: 0;
-    box-shadow: 0 0 0 2px green;
+    box-shadow: 0 0 0 2px ${(props) => props.theme['purple-700']};
+    border-radius:3px;
   }
 
   body {
@@ -22,5 +23,11 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 0.75rem;
+  }
+
+  h1 {
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
   }
 `;
