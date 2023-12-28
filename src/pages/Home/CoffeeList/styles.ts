@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 
 export const CoffeeListContainer = styled.div`
-  margin-top: 4rem;
   margin: auto 10rem;
+  margin-top: 8.75rem;
 
   img {
     width: 29.75rem;
