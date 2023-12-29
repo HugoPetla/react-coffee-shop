@@ -40,3 +40,22 @@ export const MapContainer = styled.div`
   color: ${(props) => props.theme['purple-700']};
   background-color: ${(props) => props.theme['purple-300']};
 `;
+
+export const BadgeContainer = styled.div`
+  display: flex;
+`;
+
+export const BadgeContent = styled.div`
+  display: flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 62.5rem;
+  background: ${(props) => props.theme['yellow-700']};
+  color: ${(props) => props.theme.white};
+
+  margin-left: -10px;
+  margin-top: -10px;
+`;

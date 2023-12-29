@@ -6,7 +6,6 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  justify-content: center;
 
   > *:last-child {
     margin-right: 0;
