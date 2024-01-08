@@ -1,11 +1,10 @@
-import { ShoppingCart, Plus, Minus } from 'phosphor-react';
+import { ShoppingCart } from 'phosphor-react';
 
 import { ItemCard } from './components/ItemCard';
 import { CoffeeListContainer } from './styles';
 import {
   ButtonItemCard,
   Container,
-  CounterContainer,
   DescriptionItemCard,
   PriceItemCard,
   PriceItemCardContainer,
@@ -16,6 +15,7 @@ import {
 import { CoffeeLogo } from '../../../components/CoffeeLogo';
 import { CoffeeCartContext } from '../../../contexts/CoffeeCartContext';
 import { useContext } from 'react';
+import { Counter } from '../../../components/Counter';
 
 export function CoffeeList() {
   const { coffeeCart, addCoffeeFromCart, removeCoffeeFromCart } =
@@ -28,7 +28,7 @@ export function CoffeeList() {
       <Container>
         {coffeeCart.map((coffee) => (
           <ItemCard key={coffee.id}>
-            <CoffeeLogo type={coffee.type} />
+            <CoffeeLogo type={coffee.type} marginTop="-1rem" />
             <TagContainer>
               {coffee.characteristics.map((characteristic) => (
                 <TagCard key={characteristic}>{characteristic}</TagCard>
@@ -48,21 +48,11 @@ export function CoffeeList() {
                 </strong>
               </PriceItemCard>
               <div>
-                <CounterContainer>
-                  <button
-                    type="button"
-                    onClick={() => removeCoffeeFromCart(coffee.id)}
-                  >
-                    <Minus />
-                  </button>
-                  <span>{coffee.quantity}</span>
-                  <button
-                    type="button"
-                    onClick={() => addCoffeeFromCart(coffee.id)}
-                  >
-                    <Plus />
-                  </button>
-                </CounterContainer>
+                <Counter
+                  quantity={coffee.quantity}
+                  onMinusClick={() => removeCoffeeFromCart(coffee.id)}
+                  onPlusClick={() => addCoffeeFromCart(coffee.id)}
+                />
                 <ButtonItemCard>
                   <ShoppingCart size={23} weight="fill" />
                 </ButtonItemCard>

@@ -8,12 +8,15 @@ import {
 import {
   addCoffeeFromCartAction,
   removeCoffeeFromCartAction,
+  removeAllCoffeeFromCartAction,
 } from '../reducers/coffeCart/actions';
 
 interface CoffeeCartContextData {
   coffeeCart: Coffee[];
+  deliveryTax: number;
   addCoffeeFromCart: (coffeeId: number) => void;
   removeCoffeeFromCart: (coffeeId: number) => void;
+  removeAllCoffeeFromCart: (coffeeId: number) => void;
 }
 
 export const CoffeeCartContext = createContext({} as CoffeeCartContextData);
@@ -39,9 +42,19 @@ export function CoffeeCartContextProvider({
     dispatch(removeCoffeeFromCartAction(coffeeId));
   }
 
+  function removeAllCoffeeFromCart(coffeeId: number) {
+    dispatch(removeAllCoffeeFromCartAction(coffeeId));
+  }
+
   return (
     <CoffeeCartContext.Provider
-      value={{ coffeeCart, addCoffeeFromCart, removeCoffeeFromCart }}
+      value={{
+        coffeeCart,
+        deliveryTax: 3.5,
+        addCoffeeFromCart,
+        removeCoffeeFromCart,
+        removeAllCoffeeFromCart,
+      }}
     >
       {children}
     </CoffeeCartContext.Provider>

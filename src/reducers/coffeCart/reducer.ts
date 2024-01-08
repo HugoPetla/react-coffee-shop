@@ -57,6 +57,16 @@ export function coffeCartReducer(state: CoffeeCartState, action: any) {
       });
     }
 
+    case ActionType.REMOVE_ALL_COFFEE_FROM_CART: {
+      const coffeeIndex = state.coffeeCart.findIndex(
+        (coffee) => coffee.id === action.payload.coffeeId,
+      );
+
+      return produce(state, (draft) => {
+        draft.coffeeCart[coffeeIndex].quantity = 0;
+      });
+    }
+
     default:
       return state;
   }

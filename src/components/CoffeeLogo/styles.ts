@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
-export const ItemCardImage = styled.img`
-  width: 7.5rem !important;
-  height: 7.5rem !important;
+interface ItemCardImageProps {
+  width?: string;
+  height?: string;
+  marginTop?: string;
+}
 
-  margin-top: -1rem;
+export const ItemCardImage = styled.img<ItemCardImageProps>`
+  width: ${(props) => props.width || '7.5rem !important'};
+  height: ${(props) => props.height || '7.5rem !important'};
+  margin-top: ${(props) => props.marginTop || '0'};
 `;

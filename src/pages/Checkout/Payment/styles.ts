@@ -18,7 +18,7 @@ export const TitleContainer = styled.div`
   gap: 1rem;
 
   svg {
-    color: ${({ theme }) => theme['yellow-700']};
+    color: ${({ theme }) => theme['purple-500']};
   }
 
   div {
@@ -44,4 +44,19 @@ export const Subtitle = styled(Typography)`
   color: ${({ theme }) => theme['gray-600']};
 
   font-size: 0.875rem;
+`;
+
+export const PaymentCard = styled.div`
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1 0 0;
+
+  border-radius: 0.375rem;
+  background: ${({ theme }) => theme['gray-400']};
+
+  svg {
+    color: ${({ theme }) => theme['purple-500']};
+  }
 `;
