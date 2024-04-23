@@ -46,7 +46,13 @@ export const Subtitle = styled(Typography)`
   font-size: 0.875rem;
 `;
 
-export const PaymentCard = styled.div`
+export const PaymentCardsContainer = styled.div`
+  display: flex;
+  gap: 0.75rem;
+`;
+
+export const PaymentCard = styled.div<{ checked?: boolean }>`
+  width: 10rem;
   display: flex;
   padding: 1rem;
   align-items: center;
@@ -54,9 +60,22 @@ export const PaymentCard = styled.div`
   flex: 1 0 0;
 
   border-radius: 0.375rem;
-  background: ${({ theme }) => theme['gray-400']};
+  background: ${({ theme, checked }) =>
+    checked ? theme['purple-300'] : theme['gray-400']};
+
+  border: ${({ theme, checked }) =>
+    checked ? '1px solid ' + theme['purple-700'] : 'none'};
 
   svg {
     color: ${({ theme }) => theme['purple-500']};
   }
+`;
+
+export const ErrorText = styled.p`
+  color: ${(props) => props.theme.red};
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  margin-top: 6px;
+  margin-left: 6px;
 `;

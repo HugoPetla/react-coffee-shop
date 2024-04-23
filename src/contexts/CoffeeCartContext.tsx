@@ -10,13 +10,21 @@ import {
   removeCoffeeFromCartAction,
   removeAllCoffeeFromCartAction,
 } from '../reducers/coffeCart/actions';
+import {
+  Address,
+  userInformationReducer,
+} from '../reducers/userInformation/reducer';
+import { addUserAddressAction } from '../reducers/userInformation/actions';
 
 interface CoffeeCartContextData {
   coffeeCart: Coffee[];
   deliveryTax: number;
+  address?: Address;
+  paymentMethod?: string;
   addCoffeeFromCart: (coffeeId: number) => void;
   removeCoffeeFromCart: (coffeeId: number) => void;
   removeAllCoffeeFromCart: (coffeeId: number) => void;
+  addUserAddress: (address: Address) => void;
 }
 
 export const CoffeeCartContext = createContext({} as CoffeeCartContextData);
@@ -32,7 +40,13 @@ export function CoffeeCartContextProvider({
     coffeeCart: initialState,
   });
 
+  const [userInformation, userDispatch] = useReducer(userInformationReducer, {
+    address: undefined,
+  });
+
   const { coffeeCart } = coffeeCartState;
+
+  const { address } = userInformation;
 
   function addCoffeeFromCart(coffeeId: number) {
     dispatch(addCoffeeFromCartAction(coffeeId));
@@ -46,14 +60,20 @@ export function CoffeeCartContextProvider({
     dispatch(removeAllCoffeeFromCartAction(coffeeId));
   }
 
+  function addUserAddress(address: Address) {
+    userDispatch(addUserAddressAction(address));
+  }
+
   return (
     <CoffeeCartContext.Provider
       value={{
         coffeeCart,
+        address,
         deliveryTax: 3.5,
         addCoffeeFromCart,
         removeCoffeeFromCart,
         removeAllCoffeeFromCart,
+        addUserAddress,
       }}
     >
       {children}

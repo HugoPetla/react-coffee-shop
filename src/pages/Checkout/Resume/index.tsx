@@ -107,7 +107,7 @@ export function Resume() {
         <strong>Total</strong>
         <strong>R$ {finalValue()}</strong>
       </TotalsContainer>
-      <ConfirmButton>Confirmar pedido</ConfirmButton>
+      <ConfirmButton type="submit">Confirmar pedido</ConfirmButton>
     </Container>
   );
 }

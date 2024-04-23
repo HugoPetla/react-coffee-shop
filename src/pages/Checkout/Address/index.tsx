@@ -1,5 +1,7 @@
 import { MapPin } from 'phosphor-react';
+
 import { Container, Subtitle, Title, TitleContainer } from './styles';
+import { AddressForm } from './components/AddressForm';
 
 export function Address() {
   return (
@@ -11,6 +13,8 @@ export function Address() {
           <Subtitle>Informe o endereço onde deseja receber seu pedido</Subtitle>
         </div>
       </TitleContainer>
+
+      <AddressForm />
     </Container>
   );
 }

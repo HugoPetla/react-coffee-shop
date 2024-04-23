@@ -16,6 +16,7 @@ import { CoffeeLogo } from '../../../components/CoffeeLogo';
 import { CoffeeCartContext } from '../../../contexts/CoffeeCartContext';
 import { useContext } from 'react';
 import { Counter } from '../../../components/Counter';
+import { NavLink } from 'react-router-dom';
 
 export function CoffeeList() {
   const { coffeeCart, addCoffeeFromCart, removeCoffeeFromCart } =
@@ -54,7 +55,9 @@ export function CoffeeList() {
                   onPlusClick={() => addCoffeeFromCart(coffee.id)}
                 />
                 <ButtonItemCard>
-                  <ShoppingCart size={23} weight="fill" />
+                  <NavLink to="/checkout" title="Checkout">
+                    <ShoppingCart size={23} weight="fill" />
+                  </NavLink>
                 </ButtonItemCard>
               </div>
             </PriceItemCardContainer>
